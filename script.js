@@ -39,42 +39,23 @@ $(document).ready(function() {
   
 
   function fetchDashboardData() {
-    // const url = `${CONFIG.BASE_URL}/api/general/getExpenseDetails`; // Use base URL from config.js
+    const url = `${CONFIG.BASE_URL}/api/general/getExpenseDetails`; // Use base URL from config.js
   
-    // fetch(url, {
-    //   method: 'GET',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     //'Authorization': `Bearer ${CONFIG.API_KEY}`, // If you have an API key or token
-    //   },
-    // })
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     console.log(data); // Process the API data
-    //     // Add your logic to display data in the dashboard
-    //     //$('#dashboard-content').html(JSON.stringify(data)); // Example of displaying the data
-    //   })
-    //   .catch(error => {
-    //     console.error('Error fetching data:', error);
-    //   });
+    fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+        //'Authorization': `Bearer ${CONFIG.API_KEY}`, // If you have an API key or token
+      },
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data); // Process the API data
+        // Add your logic to display data in the dashboard
+        //$('#dashboard-content').html(JSON.stringify(data)); // Example of displaying the data
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
 
-    const url = `${CONFIG.BASE_URL}/api/general/getExpenseDetails`;
-
-  $.ajax({
-    url: url,
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json'
-      //'Authorization': `Bearer ${CONFIG.API_KEY}`, // Use API key if needed
-    },
-    timeout: CONFIG.TIMEOUT, // Optional: set common timeout from config
-    success: function(data) {
-      console.log(data); // Process the API data
-      // Add your logic to display data in the dashboard
-      //$('#dashboard-content').html(JSON.stringify(data)); // Example of displaying the data
-    },
-    error: function(jqXHR, textStatus, errorThrown) {
-      console.error('Error fetching data:', textStatus, errorThrown);
-    }
-  });
   }
