@@ -1,5 +1,4 @@
 $(document).ready(function() {
-  fetchDashboardData();
     // Toggle sidebar visibility when hamburger menu is clicked
     $('#menuToggle').click(function() {
       let sidebar = $('#sidebar');
@@ -36,26 +35,3 @@ $(document).ready(function() {
       }
     });
   });
-  
-
-  function fetchDashboardData() {
-    const url = `${CONFIG.BASE_URL}/api/general/getExpenseDetails`; // Use base URL from config.js
-  
-    fetch(url, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-        //'Authorization': `Bearer ${CONFIG.API_KEY}`, // If you have an API key or token
-      },
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data); // Process the API data
-        // Add your logic to display data in the dashboard
-        //$('#dashboard-content').html(JSON.stringify(data)); // Example of displaying the data
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
-
-  }
